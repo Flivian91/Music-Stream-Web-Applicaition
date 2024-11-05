@@ -10,6 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentSong, setCurrentSong] = useState(null); // New state for current song
   const [isPlaying, setIsPlaying] = useState(false); // New state for play status
+  const [filteredItems, setFilteredItems] = useState([]);
 
   async function loadSongs() {
     try {
@@ -19,6 +20,7 @@ function App() {
         console.log(error.message);
       }
       setSongs(data || []);
+      setFilteredItems(data || [])
     } catch (error) {
       console.log(error);
     } finally {
@@ -29,15 +31,27 @@ function App() {
   useEffect(() => {
     loadSongs();
   }, []);
+  // Search funcitonality
+
+  const handleSearch = (query) => {
+    if (query.length < 2) {
+      setFilteredItems(songs);
+    } else {
+      const filtered = songs.filter((item) =>
+        item.title.toLowerCase().includes(query)
+      );
+      setFilteredItems(filtered);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-5 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-700 min-h-screen mb-10">
-      <Navbar />
+      <Navbar handleSearch={handleSearch} />
       {isLoading ? (
         <LoadingSpinner />
       ) : (
         <Home
-          songs={songs}
+          songs={filteredItems}
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
           isPlaying={isPlaying}
