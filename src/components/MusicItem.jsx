@@ -81,7 +81,7 @@ function MusicItem({
       </button>
       <span className="truncate">{song.title}</span>
       <span className="text-yellow-800">{song.artist_name}</span>
-      <span className="text-yellow-800">{song.genre}</span>
+      <span className="text-yellow-800 truncate">{song.genre}</span>
       <span className="text-yellow-800">{duration}</span>{" "}
       {/* Displaying the duration */}
       <div className="flex items-center gap-5 justify-center">

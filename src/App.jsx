@@ -45,7 +45,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col gap-5 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-700 min-h-screen mb-10">
+    <div className="flex flex-col gap-5 bg-gradient-to-r from-yellow-400 via-orange-500 to-yellow-700 min-h-screen ">
       <Navbar handleSearch={handleSearch} />
       {isLoading ? (
         <LoadingSpinner />

@@ -14,6 +14,7 @@ function MusicArea({
       {songs.map((song) => (
         <MusicItem
           song={song}
+          key={song.id}
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
           isPlaying={isPlaying}

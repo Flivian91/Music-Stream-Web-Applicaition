@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 function Searchbar({onSearch}) {
   const [searchInput, setSearchInput] = useState("");
 
   const handleChange = (e) => {
+    e.preventDefault()
     const value = e.target.value.toLowerCase();
     setSearchInput(value);
     onSearch(value); // Pass the input value to the parent component
